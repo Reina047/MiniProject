@@ -1,63 +1,86 @@
 package com.example.entreprise.model;
 
+
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
 @Entity
-public class Entreprise {
+public class Entreprise{
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
-	private Long idEmployees;
-	private String nomEmployees;
-	private Double salaireEmployees;
-	private String adresseEmployees;
+	private Long idEntreprise;
+	private String raisonSociale;
+	private String MatriculeFiscale;
+	private String adresseEntreprise;
 	
+	@OneToMany(mappedBy = "idEmployees")
+	@JsonIgnore
+	private List<Employees> employees;
+	public List<Employees> getEmployees() {
+		return employees;
+	}
+
+	public void setEmployees(List<Employees> employees) {
+		this.employees = employees;
+	}
+
 	public Entreprise() {
 		super();
 	}
-	
-	
-	public Entreprise(String nomEmployees, Double salaireEmployees, String adresseEmployees) {
+
+	public Entreprise(String raisonSociale, String matriculeFiscale, String adresseEntreprise) {
 		super();
-		this.nomEmployees = nomEmployees;
-		this.salaireEmployees = salaireEmployees;
-		this.adresseEmployees = adresseEmployees;
+		this.raisonSociale = raisonSociale;
+		this.MatriculeFiscale = matriculeFiscale;
+		this.adresseEntreprise = adresseEntreprise;
 	}
 
-
-	public Long getIdEmployees() {
-		return idEmployees;
-	}
-	public void setIdEmployees(Long idEmployees) {
-		this.idEmployees = idEmployees;
-	}
-	public String getNomEmployees() {
-		return nomEmployees;
-	}
-	public void setNomEmployees(String nomEmployees) {
-		this.nomEmployees = nomEmployees;
-	}
-	public Double getSalaireEmployees() {
-		return salaireEmployees;
-	}
-	public void setSalaireEmployees(Double salaireEmployees) {
-		this.salaireEmployees = salaireEmployees;
-	}
-	public String getAdresseEmployees() {
-		return adresseEmployees;
-	}
-	public void setAdresseEmployees(String adresseEmployees) {
-		this.adresseEmployees = adresseEmployees;
+	public Long getIdEntreprise() {
+		return idEntreprise;
 	}
 
+	public void setIdEntreprise(Long idEntreprise) {
+		this.idEntreprise = idEntreprise;
+	}
+
+	public String getRaisonSociale() {
+		return raisonSociale;
+	}
+
+	public void setRaisonSociale(String raisonSociale) {
+		this.raisonSociale = raisonSociale;
+	}
+
+	public String getMatriculeFiscale() {
+		return MatriculeFiscale;
+	}
+
+	public void setMatriculeFiscale(String matriculeFiscale) {
+		MatriculeFiscale = matriculeFiscale;
+	}
+
+	public String getAdresseEntreprise() {
+		return adresseEntreprise;
+	}
+
+	public void setAdresseEntreprise(String adresseEntreprise) {
+		this.adresseEntreprise = adresseEntreprise;
+	}
 
 	@Override
 	public String toString() {
-		return "Entreprise [idEmployees=" + idEmployees + ", nomEmployees=" + nomEmployees + ", salaireEmployees="
-				+ salaireEmployees + ", adresseEmployees=" + adresseEmployees + "]";
+		return "Entreprise [idEntreprise=" + idEntreprise + ", raisonSociale=" + raisonSociale + ", MatriculeFiscale="
+				+ MatriculeFiscale + ", adresseEntreprise=" + adresseEntreprise + "]";
 	}
+
+	
 	
 	
 }

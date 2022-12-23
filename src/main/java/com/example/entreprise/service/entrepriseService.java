@@ -5,11 +5,12 @@ import java.util.List;
 import com.example.entreprise.model.Entreprise;
 
 public interface entrepriseService {
-	Entreprise saveEmployees(Entreprise e);
-	Entreprise updateEmployees(Entreprise e);
-	void deleteEmployees(Entreprise e);
-	void deleteEmployeesById(Long id);
-	Entreprise getEmployees(Long id);
-	List<Entreprise> getAllEmployees();
+	public void AffecterEmployeesEntreprise(Long idEmployees,Long idEntreprise);
+	Entreprise saveEntreprise(Entreprise e);
+	Entreprise updateEntreprise(Entreprise e);
+	void deleteEntreprise(Entreprise e);
+	void deleteEntrepriseById(Long id);
+	Entreprise getEntreprise(Long id);
+	List<Entreprise> getAllEntreprise();
 
 }

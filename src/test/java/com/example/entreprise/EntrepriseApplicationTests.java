@@ -7,41 +7,41 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.example.entreprise.model.Entreprise;
-import com.example.entreprise.repos.EmployeesRepository;
+import com.example.entreprise.repos.EntrepriseRepository;
 
 @SpringBootTest
 class EntrepriseApplicationTests {
 
 	@Autowired
-	private EmployeesRepository employeesRepository;
+	private EntrepriseRepository entrepriseRepository;
 	@Test
 	public void testCreateEmployees() {
-	Entreprise entre = new Entreprise("ben bafoun",6000.500,"Rue ");
-	employeesRepository.save(entre);
+	Entreprise entre = new Entreprise("1582","aaa","huuu");
+	entrepriseRepository.save(entre);
 	}
     
 	@Test
-	public void testFindEmployees()
+	public void testFindEntreprise()
 	{
-	Entreprise e = employeesRepository.findById(1L).get();
+	Entreprise e = entrepriseRepository.findById(1L).get();
 	System.out.println(e);
 	}
 	@Test
-	public void testUpdateEmployees()
+	public void testUpdateEntreprise()
 	{
-	Entreprise p = employeesRepository.findById(1L).get();
-	p.setSalaireEmployees(2000.0);
-	employeesRepository.save(p);
+	Entreprise p = entrepriseRepository.findById(1L).get();
+	p.setRaisonSociale("gfggg");
+	entrepriseRepository.save(p);
 	}
 	
 	@Test
 	public void testDeleteEmployees(){
-	employeesRepository.deleteById(1L);;
+	entrepriseRepository.deleteById(1L);;
 	}
 	@Test
 	public void testFindAllEmployees()
 	{
-	List<Entreprise> entre = employeesRepository.findAll();
+	List<Entreprise> entre = entrepriseRepository.findAll();
 	for (Entreprise e : entre)
 	{
 	System.out.println(e);
